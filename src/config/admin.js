@@ -1,0 +1,1 @@
+export const ADMIN_KEY = "lgx_admin_92DkK29sQ"
