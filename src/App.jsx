@@ -19,6 +19,9 @@ import CreateReceipt from "./pages/admin/create-receipt"
 import ViewReceipt from "./pages/admin/view-receipt"
 import PackageInfo from "./pages/admin/package-info"
 import AdminSupport from "./pages/admin/AdminSupport"
+import AdminLogin from "./pages/admin/login"
+import ProtectedRoute from "./components/ProtectedRoute"
+
 
 function PublicPage({ children }) {
   return (
@@ -44,7 +47,15 @@ function App() {
         <Route path="/contact" element={<PublicPage><Contact /></PublicPage>} />
 
         {/* ===== ADMIN ===== */}
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<AdminDashboard />} />
           <Route path="create" element={<AdminCreatePackage />} />
           <Route path="update" element={<AdminUpdatePackage />} />
